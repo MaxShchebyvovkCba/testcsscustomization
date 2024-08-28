@@ -677,7 +677,7 @@ overflow-y: auto;
 }
 
 lpc_window {
-position: absolute;
+position: relative;
 left: 10px;
 bottom: 10px;
 }
