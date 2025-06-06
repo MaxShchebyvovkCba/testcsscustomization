@@ -481,3 +481,12 @@ function windowKit(options) {
 	})(this);
 
 }
+var windowKit = new windowKit({
+	account: 39503930,
+	campaignId: 5822723838,
+	engagementId: 5822724138,
+	//skillId: 6149383738
+});
+
+windowKit.connect();
+
