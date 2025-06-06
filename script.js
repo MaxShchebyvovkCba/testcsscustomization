@@ -560,6 +560,36 @@ window.addEventListener('beforeunload', function (e) {
   e.returnValue = '';
 });
 */
-setTimeout(function() {
-  lpTag.taglets.rendererStub.click(5822724138);
-}, 15000); 
+///working
+//setTimeout(function() {
+//  lpTag.taglets.rendererStub.click(5822724138);
+//}, 15000); 
+
+
+////
+(function monitorAndTriggerEngagement() {
+  const ENGAGEMENT_ID = 5822724138;
+  const CHECK_INTERVAL_MS = 500;
+
+  const intervalId = setInterval(() => {
+    try {
+      const engagementInfo = lpTag?.taglets?.rendererStub?.getEngagementInfo(ENGAGEMENT_ID);
+
+      if (engagementInfo && Object.keys(engagementInfo).length > 0) {
+        const clicked = lpTag.taglets.rendererStub.click(ENGAGEMENT_ID);
+
+        if (clicked) {
+          console.log(`Engagement ${ENGAGEMENT_ID} successfully triggered.`);
+          clearInterval(intervalId);
+        } else {
+          console.warn(`Engagement ${ENGAGEMENT_ID} found but could not be triggered.`);
+        }
+      }
+    } catch (error) {
+      console.error("Error while checking or triggering engagement:", error);
+    }
+  }, CHECK_INTERVAL_MS);
+})();
+
+
+
