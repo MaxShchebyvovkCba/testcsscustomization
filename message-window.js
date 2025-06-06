@@ -489,33 +489,30 @@ var windowKit = new windowKit({
 });
 
 //windowKit.connect();
-function clickMessageUsButtonWhenReady() {
-  const targetText = "Message Us";
+
+/////////////
+function continuouslyClickButtonById() {
+  const targetId = "LPMlabel-1749200685230-2";
+  const clickedButtons = new WeakSet();
 
   const observer = new MutationObserver(() => {
-    const buttons = document.querySelectorAll('button, a, div');
-    
-    for (const btn of buttons) {
-      if (btn.textContent.trim() === targetText) {
-        btn.click();
-        console.log('"Message Us" button clicked!');
-        observer.disconnect(); // зупиняємо спостереження після кліку
-        break;
-      }
+    const btn = document.getElementById(targetId);
+
+    if (btn && !clickedButtons.has(btn)) {
+      btn.click();
+      clickedButtons.add(btn);
+      console.log(`Button with id "${targetId}" clicked!`);
     }
   });
 
-  // Налаштування спостереження за всім тілом сторінки
   observer.observe(document.body, {
     childList: true,
     subtree: true
   });
 }
 
-// Запускаємо функцію після завантаження сторінки
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', clickMessageUsButtonWhenReady);
+  document.addEventListener('DOMContentLoaded', continuouslyClickButtonById);
 } else {
-  clickMessageUsButtonWhenReady();
+  continuouslyClickButtonById();
 }
-
