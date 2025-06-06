@@ -560,4 +560,6 @@ window.addEventListener('beforeunload', function (e) {
   e.returnValue = '';
 });
 */
-lpTag.taglets.rendererStub.click(5822724138);
+setTimeout(function() {
+  lpTag.taglets.rendererStub.click(5822724138);
+}, 15000); 
