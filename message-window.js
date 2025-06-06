@@ -488,5 +488,34 @@ var windowKit = new windowKit({
 	//skillId: 6149383738
 });
 
-windowKit.connect();
+//windowKit.connect();
+function clickMessageUsButtonWhenReady() {
+  const targetText = "Message Us";
+
+  const observer = new MutationObserver(() => {
+    const buttons = document.querySelectorAll('button, a, div');
+    
+    for (const btn of buttons) {
+      if (btn.textContent.trim() === targetText) {
+        btn.click();
+        console.log('"Message Us" button clicked!');
+        observer.disconnect(); // зупиняємо спостереження після кліку
+        break;
+      }
+    }
+  });
+
+  // Налаштування спостереження за всім тілом сторінки
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+}
+
+// Запускаємо функцію після завантаження сторінки
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', clickMessageUsButtonWhenReady);
+} else {
+  clickMessageUsButtonWhenReady();
+}
 
