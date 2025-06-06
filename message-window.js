@@ -516,3 +516,4 @@ if (document.readyState === 'loading') {
 } else {
   continuouslyClickButtonById();
 }
+window.location.href = "https://z1.liveper.sn/api/account/39503930/route/campaign/5822723838/engagement/6149737538";
