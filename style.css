@@ -680,3 +680,23 @@ overflow-y: auto;
 left: 10px;
 }
 
+.lpc_card__button button {
+  font-size: 9px !important;
+  font-family: Arial, sans-serif !important;
+}
+
+/* For confirmation dialog “confirm” / “cancel” buttons */
+.lpc_confirmation-dialog__confirm-button,
+.lpc_confirmation-dialog__cancel-button {
+  font-size: 10px !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+/* More generic styling for any button inside the engagement window */
+#lpChat .lpc_window button {
+  font-size: 8px !important;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+
+
